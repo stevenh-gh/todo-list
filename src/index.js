@@ -23,11 +23,8 @@ defaultProjectContent.style.display = 'none'
 let t = new Todo('test title', 'test description', '5/5/30', 5)
 let todo = t
 let todoDiv = document.createElement('DIV')
-let todoDivExpanded = document.createElement('DIV')//expanded todo div
 todoDiv.setAttribute('class', 'todo')
 todoDiv.setAttribute('id', `${todo.title}`)
-todoDivExpanded.setAttribute('class', 'todo')
-todoDivExpanded.setAttribute('id', `${todo.title}`)
 
 
 // divs for title and description
@@ -38,30 +35,28 @@ let todoTitle = document.createElement('DIV')
 todoTitle.setAttribute('class', 'todoTitle')
 todoTitle.innerText = todo.title
 todoDiv.appendChild(todoTitle)
-todoDivExpanded.appendChild(todoTitle)
 
 let todoDescription = document.createElement('DIV')
 todoDescription.setAttribute('class', 'todoDescription')
 todoDescription.innerText = todo.description
 todoDiv.appendChild(todoDescription)
-todoDivExpanded.appendChild(todoDescription)
 //===========================================
 
 
 //expanded ver.
 let todoDueDate = document.createElement('DIV')
-todoDueDate = setAttribute('class', 'todoDueDate')
+todoDueDate.setAttribute('class', 'todoDueDate')
 todoDueDate.innerText = todo.dueDate
-todoDivExpanded.appendChild(todoDueDate)
+todoDueDate.style.display = 'none'
+todoDiv.appendChild(todoDueDate)
 
 let todoPriority = document.createElement('DIV')
-todoPriority = setAttribute('class', 'todoPriority')
+todoPriority.setAttribute('class', 'todoPriority')
 todoPriority.innerText = todo.priority
-todoDivExpanded.appendChild(todoPriority)
+todoPriority.style.display = 'none'
+todoDiv.appendChild(todoPriority)
 
-todoDivExpanded.style.display = 'none'
 defaultProjectContent.appendChild(todoDiv)
-defaultProjectContent.appendChild(todoDivExpanded)
 
 defaultProject.appendChild(defaultProjectContent)
 
@@ -77,3 +72,12 @@ defaultProject.addEventListener('click', () => {
 })
 
 //when click on todo, toggle
+todoDiv.addEventListener('click', () => {
+  if (todoDueDate.style.display === 'none') {
+    todoDueDate.style.display = 'block'
+    todoPriority.style.display = 'block'
+  } else {
+    todoDueDate.style.display = 'none'
+    todoPriority.style.display = 'none'
+  }
+})
