@@ -56,9 +56,16 @@ todoPriority.innerText = todo.priority
 todoPriority.style.display = 'none'
 todoDiv.appendChild(todoPriority)
 
+
+
 defaultProjectContent.appendChild(todoDiv)
 
 defaultProject.appendChild(defaultProjectContent)
+
+//add 'add new todo' button
+let addTodoBtn = document.createElement('BUTTON')
+addTodoBtn.innerText = 'Add todo'
+defaultProject.appendChild(addTodoBtn)
 
 projects.appendChild(defaultProject)
 
