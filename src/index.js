@@ -88,3 +88,7 @@ todoDiv.addEventListener('click', () => {
     todoPriority.style.display = 'none'
   }
 })
+
+addTodoBtn.addEventListener('click', e => {
+  console.log(e)
+})
