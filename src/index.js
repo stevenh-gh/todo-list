@@ -58,6 +58,21 @@ let addTodoBtn = document.createElement('BUTTON')
 addTodoBtn.innerText = 'Add todo'
 defaultProject.appendChild(addTodoBtn)
 
+
+// add todo form
+let formDiv=document.createElement('DIV')
+formDiv.innerHTML=`
+  <form id='addTodoForm'>
+    <input type='text' placeholder='title'><br>
+    <input type='text' placeholder='description'><br>
+    <input type='number' max=5 placeholder='priority'><br>
+    <input type='date'><br>
+    <input type='submit' value='Add new todo'>
+  </form>
+`
+
+defaultProject.appendChild(formDiv)
+
 projects.appendChild(defaultProject)
 
 
