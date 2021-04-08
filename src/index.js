@@ -60,14 +60,15 @@ defaultProject.appendChild(addTodoBtn)
 
 
 // add todo form
-let formDiv=document.createElement('DIV')
-formDiv.innerHTML=`
+let formDiv = document.createElement('DIV')
+formDiv.style.display = 'none'
+formDiv.innerHTML = `
   <form id='addTodoForm'>
-    <input type='text' placeholder='title'><br>
-    <input type='text' placeholder='description'><br>
-    <input type='number' max=5 placeholder='priority'><br>
-    <input type='date'><br>
-    <input type='submit' value='Add new todo'>
+    <input name='title' type='text' placeholder='title'><br>
+    <input name='description' type='text' placeholder='description'><br>
+    <input name='priority' type='number' max=5 placeholder='priority'><br>
+    <input name='date' type='date'><br>
+    <input id='addTodoSubmit' type='submit' value='Add new todo'>
   </form>
 `
 
@@ -84,7 +85,27 @@ defaultProject.addEventListener('click', () => {
   defaultProjectContent.style.display = 'block'
 })
 
+
+document.querySelector('#addTodoSubmit').addEventListener('click', e => {
+
+  e.preventDefault()
+
+  let form = document.forms.addTodoForm
+  let fd = new FormData(form)
+  console.log(fd.get('title'))
+  console.log(fd.get('description'))
+  console.log(fd.get('priority'))
+  console.log(fd.get('date'))
+
+  form.reset()
+})
+
 //when click on todo, toggle
-addTodoBtn.addEventListener('click', e => {
-  console.log(e)
+addTodoBtn.addEventListener('click', () => {
+
+  if (formDiv.style.display === 'none') {
+    formDiv.style.display = 'block'
+  } else {
+    formDiv.style.display = 'none'
+  }
 })
