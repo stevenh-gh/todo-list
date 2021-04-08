@@ -18,44 +18,35 @@ defaultProjectContent.setAttribute('class', 'content')
 defaultProjectContent.setAttribute('id', 'defaultProject')
 defaultProjectContent.style.display = 'none'
 
-// todo list
-
 let t = new Todo('test title', 'test description', '5/5/30', 5)
-let todo = t
-let todoDiv = document.createElement('DIV')
-todoDiv.setAttribute('class', 'todo')
-todoDiv.setAttribute('id', `${todo.title}`)
 
+function makeTodoDiv(todo) {
 
-// divs for title and description
+  let todoDiv = todo.genDiv()
+  let todoTitle = todo.genTitle()
+  let todoDescription = todo.genDescription()
+  let todoDueDate = todo.genDueDate()
+  let todoPriority = todo.genPriority()
 
-// unexpanded ver.
-//========================================
-let todoTitle = document.createElement('DIV')
-todoTitle.setAttribute('class', 'todoTitle')
-todoTitle.innerText = todo.title
-todoDiv.appendChild(todoTitle)
+  todoDiv.appendChild(todoTitle)
+  todoDiv.appendChild(todoDescription)
+  todoDiv.appendChild(todoDueDate)
+  todoDiv.appendChild(todoPriority)
 
-let todoDescription = document.createElement('DIV')
-todoDescription.setAttribute('class', 'todoDescription')
-todoDescription.innerText = todo.description
-todoDiv.appendChild(todoDescription)
-//===========================================
+  todoDiv.addEventListener('click', () => {
+    if (todoDueDate.style.display === 'none') {
+      todoDueDate.style.display = 'block'
+      todoPriority.style.display = 'block'
+    } else {
+      todoDueDate.style.display = 'none'
+      todoPriority.style.display = 'none'
+    }
+  })
 
+  return todoDiv
+}
 
-//expanded ver.
-let todoDueDate = document.createElement('DIV')
-todoDueDate.setAttribute('class', 'todoDueDate')
-todoDueDate.innerText = todo.dueDate
-todoDueDate.style.display = 'none'
-todoDiv.appendChild(todoDueDate)
-
-let todoPriority = document.createElement('DIV')
-todoPriority.setAttribute('class', 'todoPriority')
-todoPriority.innerText = todo.priority
-todoPriority.style.display = 'none'
-todoDiv.appendChild(todoPriority)
-
+let todoDiv = makeTodoDiv(t)
 
 
 defaultProjectContent.appendChild(todoDiv)
@@ -79,16 +70,6 @@ defaultProject.addEventListener('click', () => {
 })
 
 //when click on todo, toggle
-todoDiv.addEventListener('click', () => {
-  if (todoDueDate.style.display === 'none') {
-    todoDueDate.style.display = 'block'
-    todoPriority.style.display = 'block'
-  } else {
-    todoDueDate.style.display = 'none'
-    todoPriority.style.display = 'none'
-  }
-})
-
 addTodoBtn.addEventListener('click', e => {
   console.log(e)
 })

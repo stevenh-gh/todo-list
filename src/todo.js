@@ -10,33 +10,41 @@ class Todo {
     this.priority = priority
   }
 
-  get title() {
-    return this._title
+  genDiv() {
+    let todoDiv = document.createElement('DIV')
+    todoDiv.setAttribute('class', 'todo')
+    todoDiv.setAttribute('id', `${this.title}`)
+    return todoDiv
   }
 
-  set title(value) {
-    this._title = value
+  genTitle() {
+    let todoTitle = document.createElement('DIV')
+    todoTitle.setAttribute('class', 'todoTitle')
+    todoTitle.innerText = this.title
+    return todoTitle
   }
 
-  get description() {
-    return this._description
-  }
-  set description(value) {
-    this._description = value
-  }
-
-  get dueDate() {
-    return this._dueDate
-  }
-  set dueDate(value) {
-    this._dueDate = value
+  genDescription() {
+    let todoDescription = document.createElement('DIV')
+    todoDescription.setAttribute('class', 'todoDescription')
+    todoDescription.innerText = this.description
+    return todoDescription
   }
 
-  get priority() {
-    return this._priority
+  genDueDate() {
+    let todoDueDate = document.createElement('DIV')
+    todoDueDate.setAttribute('class', 'todoDueDate')
+    todoDueDate.innerText = this.dueDate
+    todoDueDate.style.display = 'none'
+    return todoDueDate
   }
-  set priority(value) {
-    this._priority = value
+
+  genPriority() {
+    let todoPriority = document.createElement('DIV')
+    todoPriority.setAttribute('class', 'todoPriority')
+    todoPriority.innerText = this.priority
+    todoPriority.style.display = 'none'
+    return todoPriority
   }
 }
 
