@@ -85,20 +85,20 @@ defaultProject.addEventListener('click', () => {
   defaultProjectContent.style.display = 'block'
 })
 
-
-document.querySelector('#addTodoSubmit').addEventListener('click', e => {
+function makeNewTodo(e) {
 
   e.preventDefault()
 
   let form = document.forms.addTodoForm
   let fd = new FormData(form)
-  console.log(fd.get('title'))
-  console.log(fd.get('description'))
-  console.log(fd.get('priority'))
-  console.log(fd.get('date'))
+
+  let t = makeTodoDiv(new Todo(fd.get('title'), fd.get('description'), fd.get('date'), fd.get('priority')))
+  defaultProjectContent.appendChild(t)
 
   form.reset()
-})
+}
+
+document.querySelector('#addTodoSubmit').addEventListener('click', makeNewTodo)
 
 //when click on todo, toggle
 addTodoBtn.addEventListener('click', () => {
