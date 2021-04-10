@@ -33,6 +33,21 @@ let projectFormSubmit = projectFormDiv.querySelector('#projectFormSubmit')
 projectFormSubmit.addEventListener('click', e => {
   e.preventDefault()
   console.log(e)
+
+  let form = document.forms.projectFormDiv
+  let fd = new FormData(form)
+
+  console.log(fd.get('projectName'))
+
+  let p = new Project(fd.get('projectName'))
+  let pTab = p.projectTab()
+  let pSpace = p.projectSpace()
+
+  pTab.appendChild(pSpace)
+  projects.appendChild(pTab)
+
+  form.reset()
+
 })
 
 projects.appendChild(projectFormDiv)
