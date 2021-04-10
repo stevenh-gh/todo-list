@@ -2,6 +2,7 @@
 
 
 import Todo from './todo'
+import Project from './project'
 
 
 const projects = document.querySelector('#projects')
@@ -12,17 +13,25 @@ addNewProjectBtn.innerText = 'Add new project'
 addNewProjectBtn.setAttribute('id', 'addNewProjectBtn')
 projects.appendChild(addNewProjectBtn)
 
-// make default project
-let defaultProject = document.createElement('DIV')
-defaultProject.setAttribute('class', 'project')
-defaultProject.setAttribute('id', 'defaultProject')
-defaultProject.innerHTML = `<span>Default</span>`
+addNewProjectBtn.addEventListener('click', e => {
+  e.preventDefault()
+  console.log(e)
+})
+
+let p = new Project('default')
+// make default project (the clickable tab)
+// let defaultProject = document.createElement('DIV')
+// defaultProject.setAttribute('class', 'project')
+// defaultProject.setAttribute('id', 'defaultProject')
+// defaultProject.innerHTML = `<span>Default</span>`
+let defaultProject = p.projectTab()
 
 //make default project's space
-let defaultProjectContent = document.createElement('DIV')
-defaultProjectContent.setAttribute('class', 'content')
-defaultProjectContent.setAttribute('id', 'defaultProjectContent')
-defaultProjectContent.style.display = 'none'
+// let defaultProjectContent = document.createElement('DIV')
+// defaultProjectContent.setAttribute('class', 'content')
+// defaultProjectContent.setAttribute('id', 'defaultProjectContent')
+// defaultProjectContent.style.display = 'none'
+let defaultProjectContent = p.projectSpace()
 
 let t = new Todo('test title', 'test description', '5/5/30', 5)
 
