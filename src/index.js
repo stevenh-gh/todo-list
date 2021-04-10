@@ -6,16 +6,22 @@ import Todo from './todo'
 
 const projects = document.querySelector('#projects')
 
+//add 'add project' button
+let addNewProjectBtn = document.createElement('BUTTON')
+addNewProjectBtn.innerText = 'Add new project'
+addNewProjectBtn.setAttribute('id', 'addNewProjectBtn')
+projects.appendChild(addNewProjectBtn)
+
 // make default project
 let defaultProject = document.createElement('DIV')
 defaultProject.setAttribute('class', 'project')
 defaultProject.setAttribute('id', 'defaultProject')
-defaultProject.innerText = 'Default'
+defaultProject.innerHTML = `<span>Default</span>`
 
 //make default project's space
 let defaultProjectContent = document.createElement('DIV')
 defaultProjectContent.setAttribute('class', 'content')
-defaultProjectContent.setAttribute('id', 'defaultProject')
+defaultProjectContent.setAttribute('id', 'defaultProjectContent')
 defaultProjectContent.style.display = 'none'
 
 let t = new Todo('test title', 'test description', '5/5/30', 5)
