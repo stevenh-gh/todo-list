@@ -13,10 +13,29 @@ addNewProjectBtn.innerText = 'Add new project'
 addNewProjectBtn.setAttribute('id', 'addNewProjectBtn')
 projects.appendChild(addNewProjectBtn)
 
-addNewProjectBtn.addEventListener('click', e => {
+addNewProjectBtn.addEventListener('click', () => {
+  if (projectFormDiv.style.display === 'none') {
+    projectFormDiv.style.display = 'block'
+  } else {
+    projectFormDiv.style.display = 'none'
+  }
+})
+
+let projectFormDiv = document.createElement('DIV')
+projectFormDiv.style.display = 'none'
+projectFormDiv.innerHTML = `
+  <form id='projectFormDiv'>
+    <input type='text' name='projectName' placeholder='project name'><br>
+    <input id='projectFormSubmit' type='submit' value='Add project'> 
+  </form>
+`
+let projectFormSubmit = projectFormDiv.querySelector('#projectFormSubmit')
+projectFormSubmit.addEventListener('click', e => {
   e.preventDefault()
   console.log(e)
 })
+
+projects.appendChild(projectFormDiv)
 
 let p = new Project('default')
 // make default project (the clickable tab)
@@ -88,6 +107,7 @@ formDiv.innerHTML = `
 `
 
 defaultProject.appendChild(formDiv)
+
 
 projects.appendChild(defaultProject)
 
