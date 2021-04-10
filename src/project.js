@@ -12,7 +12,7 @@ class Project {
     let project = document.createElement('DIV')
     project.setAttribute('class', 'project')
     project.setAttribute('id', `${this.name}project`)
-    project.innerHTML = `<span>${this.name}</span>`
+    project.innerHTML = `<div>${this.name}</div>`
     return project
   }
 
