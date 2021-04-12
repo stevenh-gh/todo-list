@@ -1,3 +1,8 @@
 .todo {
   border: 1px solid black;
 }
+
+#projects {
+  display: flex;
+  flex-direction: row;
+}

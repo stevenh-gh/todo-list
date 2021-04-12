@@ -4,14 +4,14 @@
 import Todo from './todo'
 import Project from './project'
 
-
 const projects = document.querySelector('#projects')
+const addProjectForm = document.querySelector('#addProjectForm')
 
 //add 'add project' button
 let addNewProjectBtn = document.createElement('BUTTON')
 addNewProjectBtn.innerText = 'Add new project'
 addNewProjectBtn.setAttribute('id', 'addNewProjectBtn')
-projects.appendChild(addNewProjectBtn)
+addProjectForm.appendChild(addNewProjectBtn)
 
 addNewProjectBtn.addEventListener('click', () => {
   if (projectFormDiv.style.display === 'none') {
@@ -50,7 +50,7 @@ projectFormSubmit.addEventListener('click', e => {
 
 })
 
-projects.appendChild(projectFormDiv)
+addProjectForm.appendChild(projectFormDiv)
 
 let p = new Project('default')
 // make default project (the clickable tab)
