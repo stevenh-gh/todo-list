@@ -4,6 +4,7 @@
 import Todo from './todo'
 import Project from './project'
 
+const body = document.querySelector('body')
 const projects = document.querySelector('#projects')
 const addProjectForm = document.querySelector('#addProjectForm')
 
@@ -43,8 +44,18 @@ projectFormSubmit.addEventListener('click', e => {
   let pTab = p.projectTab()
   let pSpace = p.projectSpace()
 
-  pTab.appendChild(pSpace)
+  pTab.addEventListener('click', () => {
+    let contents = document.querySelectorAll('.content')
+    contents.forEach(content => {
+      content.style.display = 'none'
+    })
+    pSpace.style.display = 'block'
+    currentProjectContent = pSpace
+  })
+
+  body.appendChild(pSpace)
   projects.appendChild(pTab)
+
 
   form.reset()
 
@@ -66,6 +77,7 @@ let defaultProject = p.projectTab()
 // defaultProjectContent.setAttribute('id', 'defaultProjectContent')
 // defaultProjectContent.style.display = 'none'
 let defaultProjectContent = p.projectSpace()
+let currentProjectContent = defaultProjectContent
 
 let t = new Todo('test title', 'test description', '5/5/30', 5)
 
@@ -100,12 +112,13 @@ let todoDiv = makeTodoDiv(t)
 
 defaultProjectContent.appendChild(todoDiv)
 
-defaultProject.appendChild(defaultProjectContent)
+// defaultProject.appendChild(defaultProjectContent)
+body.appendChild(defaultProjectContent)
 
 //add 'add new todo' button
 let addTodoBtn = document.createElement('BUTTON')
 addTodoBtn.innerText = 'Add todo'
-defaultProject.appendChild(addTodoBtn)
+addProjectForm.appendChild(addTodoBtn)
 
 
 // add todo form
@@ -121,7 +134,7 @@ formDiv.innerHTML = `
   </form>
 `
 
-defaultProject.appendChild(formDiv)
+addProjectForm.appendChild(formDiv)
 
 
 projects.appendChild(defaultProject)
@@ -143,7 +156,7 @@ function makeNewTodo(e) {
   let fd = new FormData(form)
 
   let t = makeTodoDiv(new Todo(fd.get('title'), fd.get('description'), fd.get('date'), fd.get('priority')))
-  defaultProjectContent.appendChild(t)
+  currentProjectContent.appendChild(t)
 
   form.reset()
 }
