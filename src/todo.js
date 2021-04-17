@@ -6,3 +6,5 @@ function Todo(title, description, priority, date) {
     date
   }
 }
+
+export default Todo
