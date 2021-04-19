@@ -1,7 +1,7 @@
 import Project from './project'
 import Todo from './todo'
+import Content from './content'
 
-const content = document.querySelector('#content')
 
 let defaultProject = Project('Default Project')
 defaultProject.todos.push(Todo(
@@ -11,25 +11,27 @@ defaultProject.todos.push(Todo(
   '5/5/05'
 ))
 
+Content.projects.push(defaultProject)
+
 let defaultProjectBtn = document.createElement('BUTTON')
 defaultProjectBtn.innerText = defaultProject.title
 
-content.appendChild(defaultProjectBtn)
+Content.contentDiv.appendChild(defaultProjectBtn)
 
 
 
 
+// for each project in Content,
+// and for each todo in each project,
+// create todo div
 
-
-
-
-
-
-defaultProject.todos.forEach(todo => {
-  let todoDiv = document.createElement('DIV')
-  todoDiv.id = todo.title
-  todoDiv.class = 'todo'
-  // todoDiv.style.display = 'none'
-  todoDiv.innerText = todo.title
-  content.appendChild(todoDiv)
+Content.projects.forEach(project => {
+  project.todos.forEach(todo => {
+    let todoDiv = document.createElement('DIV')
+    todoDiv.id = todo.title
+    todoDiv.class = 'todo'
+    // todoDiv.style.display = 'none'
+    todoDiv.innerText = todo.title
+    Content.contentDiv.appendChild(todoDiv)
+  })
 })
