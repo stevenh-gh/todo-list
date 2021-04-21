@@ -3,9 +3,14 @@ function Todo(title, description, priority, date) {
   let div = (() => {
     let todoDiv = document.createElement('DIV')
     todoDiv.id = title
-    todoDiv.class = 'todo'
-    // todoDiv.style.display = 'none'
-    todoDiv.innerText = title
+    todoDiv.setAttribute('class', 'todo')
+    todoDiv.style.display = 'none'
+    todoDiv.innerHTML = `
+      <div>${title}</div>
+      <div>${description}</div>
+      <div>${priority}</div>
+      <div>${date}</div>
+    `
 
     return todoDiv
   })()

@@ -4,7 +4,7 @@ import Content from './content'
 
 
 let defaultProject = Project('Default Project')
-defaultProject.todos.push(Todo(
+defaultProject.add(Todo(
   'Default todo',
   'This is a sample todo item',
   5,
