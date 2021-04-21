@@ -13,10 +13,10 @@ defaultProject.todos.push(Todo(
 
 Content.projects.push(defaultProject)
 
-let defaultProjectBtn = document.createElement('BUTTON')
-defaultProjectBtn.innerText = defaultProject.title
+Content.projects.forEach(project => {
+  Content.contentDiv.appendChild(project.button)
+})
 
-Content.contentDiv.appendChild(defaultProjectBtn)
 
 
 
