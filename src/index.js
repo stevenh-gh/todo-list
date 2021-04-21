@@ -27,11 +27,6 @@ Content.projects.forEach(project => {
 
 Content.projects.forEach(project => {
   project.todos.forEach(todo => {
-    let todoDiv = document.createElement('DIV')
-    todoDiv.id = todo.title
-    todoDiv.class = 'todo'
-    // todoDiv.style.display = 'none'
-    todoDiv.innerText = todo.title
-    Content.contentDiv.appendChild(todoDiv)
+    Content.contentDiv.appendChild(todo.div)
   })
 })
