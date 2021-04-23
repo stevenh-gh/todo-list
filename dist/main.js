@@ -10,6 +10,16 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
+/***/ "./src/addTodoForm.js":
+/*!****************************!*\
+  !*** ./src/addTodoForm.js ***!
+  \****************************/
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\nfunction addTodoForm(project) {\n\n  let form = document.createElement('DIV')\n  form.innerHTML = `\n    <form>\n      <input type='text' name='title' placeholder='title'></input><br>\n      <input type='text' name='description' placeholder='description'></input><br>\n      <input type='number' name='number' max=5 value=0></input><br>\n      <input type='date' name='date'></input><br>\n    </form>\n  `\n  let submitBtn = (() => {\n    let b = document.createElement('BUTTON')\n    b.innerText = `Submit to project ${project.title}`\n    form.appendChild(b)\n    b.addEventListener('click', e => {\n      e.preventDefault()\n      console.log(e)\n    })\n  })()\n\n  return form\n}\n\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (addTodoForm);\n\n//# sourceURL=webpack://todo-list/./src/addTodoForm.js?");
+
+/***/ }),
+
 /***/ "./src/content.js":
 /*!************************!*\
   !*** ./src/content.js ***!
@@ -26,7 +36,7 @@ eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpac
   \**********************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _todo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo */ \"./src/todo.js\");\n/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content */ \"./src/content.js\");\n\n\n\n\n\nlet defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_0__.default)('Default Project')\ndefaultProject.add((0,_todo__WEBPACK_IMPORTED_MODULE_1__.default)(\n  'Default todo',\n  'This is a sample todo item',\n  5,\n  '5/5/05'\n))\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.push(defaultProject)\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.forEach(project => {\n  _content__WEBPACK_IMPORTED_MODULE_2__.default.contentDiv.appendChild(project.button)\n})\n\n\n\n\n\n// for each project in Content,\n// and for each todo in each project,\n// create todo div\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.forEach(project => {\n  project.todos.forEach(todo => {\n    _content__WEBPACK_IMPORTED_MODULE_2__.default.contentDiv.appendChild(todo.div)\n  })\n})\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _project__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./project */ \"./src/project.js\");\n/* harmony import */ var _todo__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./todo */ \"./src/todo.js\");\n/* harmony import */ var _content__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./content */ \"./src/content.js\");\n/* harmony import */ var _addTodoForm__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./addTodoForm */ \"./src/addTodoForm.js\");\n\n\n\n\n\n\nlet defaultProject = (0,_project__WEBPACK_IMPORTED_MODULE_0__.default)('Default Project')\ndefaultProject.add((0,_todo__WEBPACK_IMPORTED_MODULE_1__.default)(\n  'Default todo',\n  'This is a sample todo item',\n  5,\n  '5/5/05'\n))\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.push(defaultProject)\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.forEach(project => {\n  _content__WEBPACK_IMPORTED_MODULE_2__.default.contentDiv.appendChild(project.button)\n})\n\n\n\n\n\n// for each project in Content,\n// and for each todo in each project,\n// create todo div\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.projects.forEach(project => {\n  project.todos.forEach(todo => {\n    _content__WEBPACK_IMPORTED_MODULE_2__.default.contentDiv.appendChild(todo.div)\n  })\n})\n\n_content__WEBPACK_IMPORTED_MODULE_2__.default.contentDiv.appendChild((0,_addTodoForm__WEBPACK_IMPORTED_MODULE_3__.default)(defaultProject))\n\n//# sourceURL=webpack://todo-list/./src/index.js?");
 
 /***/ }),
 

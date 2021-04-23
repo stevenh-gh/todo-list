@@ -1,6 +1,7 @@
 import Project from './project'
 import Todo from './todo'
 import Content from './content'
+import addTodoForm from './addTodoForm'
 
 
 let defaultProject = Project('Default Project')
@@ -30,3 +31,5 @@ Content.projects.forEach(project => {
     Content.contentDiv.appendChild(todo.div)
   })
 })
+
+Content.contentDiv.appendChild(addTodoForm(defaultProject))
